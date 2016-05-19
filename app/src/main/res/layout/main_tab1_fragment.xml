@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" 
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#cfd8dc"
+        android:gravity="center_vertical"
+        >
+        <ImageView
+            android:id="@+id/search_button"
+            android:layout_width="0dp"
+            android:adjustViewBounds="true"
+            android:maxHeight="25dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" 
+            android:src="@drawable/search"
+            android:scaleType="fitCenter"
+            />
+        <TextView
+            android:id="@+id/hot"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" 
+            android:textSize="18sp"
+            android:textColor="#000"
+            android:text="热门"/>
+        <TextView
+            android:id="@+id/channel"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="#000"
+            android:text="频道"/>
+        <TextView
+            android:id="@+id/newest"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" 
+            android:textSize="18sp"
+            android:textColor="#000"
+            android:text="最新"/>
+        
+        <ImageView
+            android:id="@+id/post_button"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:maxHeight="25dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/post"/>
+    </LinearLayout>
+    
+    <FrameLayout
+        android:id="@+id/xp_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        
+    </FrameLayout>
+</LinearLayout>

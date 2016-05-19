@@ -1,0 +1,109 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <FrameLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="0dp"
+        >
+
+    </FrameLayout>
+    <!--底部标签-->
+    <LinearLayout
+        android:id="@+id/bottom_label"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#cfd8dc"
+        android:baselineAligned="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/xp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/xplore1_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:textColor="#000000"
+                android:text="享部落"
+                android:textSize="12sp" />
+
+            <ImageView
+                android:id="@+id/xplore1_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/xplore1_text"
+                android:scaleType="fitCenter"
+                android:src="@drawable/diamond" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/camera"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/camera_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:textColor="#000000"
+                android:text="摄像机"
+                android:textSize="12sp" />
+
+            <ImageView
+                android:id="@+id/camera_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/camera_text"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/camera" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/my"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/my_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:textColor="#000000"
+                android:text="我的"
+                android:textSize="12sp" />
+
+            <ImageView
+                android:id="@+id/my_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/my_text"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/person" />
+
+
+        </RelativeLayout>
+    </LinearLayout>
+
+
+</LinearLayout>
