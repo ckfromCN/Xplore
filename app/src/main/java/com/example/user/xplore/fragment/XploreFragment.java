@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -17,7 +18,7 @@ import com.example.user.xplore.R;
 import com.example.user.xplore.activity.PostAcitivity;
 import com.example.user.xplore.activity.SearchActivity;
 
-public class XploreFragment extends Fragment implements View.OnClickListener {
+public class XploreFragment extends Fragment implements View.OnClickListener,View.OnTouchListener {
     /*
     享部落模块顶部五个标签,两个图片按钮,三个文字按钮
      */
@@ -35,7 +36,7 @@ public class XploreFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-       
+
 
     }
 
@@ -49,14 +50,15 @@ public class XploreFragment extends Fragment implements View.OnClickListener {
         searchImg = (ImageView) xpLayout.findViewById(R.id.search_button);
         postImg = (ImageView) xpLayout.findViewById(R.id.post_button);
 
-
         fragmentManager = getFragmentManager();
+        setTabSelection(0);
         hotTv.setOnClickListener(this);
         channelTv.setOnClickListener(this);
         newsetTv.setOnClickListener(this);
         searchImg.setOnClickListener(this);
+        searchImg.setOnTouchListener(this);
         postImg.setOnClickListener(this);
-      
+        postImg.setOnTouchListener(this);
 
         return xpLayout;
     }
@@ -64,7 +66,7 @@ public class XploreFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-      
+
 
     }
 
@@ -83,20 +85,20 @@ public class XploreFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.search_button:
-                Intent intent1=new Intent(getActivity(), SearchActivity.class);
+                Intent intent1 = new Intent(getActivity(), SearchActivity.class);
                 startActivity(intent1);
                 break;
             case R.id.hot:
                 setTabSelection(0);
-                break;  
+                break;
             case R.id.channel:
                 setTabSelection(1);
-                break;  
+                break;
             case R.id.newest:
                 setTabSelection(2);
                 break;
             case R.id.post_button:
-                Intent intent2=new Intent(getActivity(), PostAcitivity.class);
+                Intent intent2 = new Intent(getActivity(), PostAcitivity.class);
                 startActivity(intent2);
                 break;
         }
@@ -108,7 +110,7 @@ public class XploreFragment extends Fragment implements View.OnClickListener {
         hiddenFragment(transaction);
         switch (i) {
             case 0:
-                hotTv.setTextColor(Color.parseColor("#ff7f27"));
+                hotTv.setTextColor(Color.parseColor("#f18d02"));
                 if (hotFragment == null) {
                     hotFragment = new HotFragment();
                     transaction.add(R.id.xp_content, hotFragment);
@@ -117,7 +119,7 @@ public class XploreFragment extends Fragment implements View.OnClickListener {
                 }
                 break;
             case 1:
-                channelTv.setTextColor(Color.parseColor("#ff7f27"));
+                channelTv.setTextColor(Color.parseColor("#f18d02"));
                 if (channelFragment == null) {
                     channelFragment = new ChannelFragment();
                     transaction.add(R.id.xp_content, channelFragment);
@@ -126,7 +128,7 @@ public class XploreFragment extends Fragment implements View.OnClickListener {
                 }
                 break;
             case 2:
-                newsetTv.setTextColor(Color.parseColor("#ff7f27"));
+                newsetTv.setTextColor(Color.parseColor("#f18d02"));
                 if (newestFragment == null) {
                     newestFragment = new NewestFragment();
                     transaction.add(R.id.xp_content, newestFragment);
@@ -146,11 +148,31 @@ public class XploreFragment extends Fragment implements View.OnClickListener {
     }
 
     private void hiddenFragment(FragmentTransaction transaction) {
-        if (hotFragment!=null)
+        if (hotFragment != null)
             transaction.hide(hotFragment);
-        if (channelFragment!=null)
+        if (channelFragment != null)
             transaction.hide(channelFragment);
-        if (newestFragment!=null)
+        if (newestFragment != null)
             transaction.hide(newestFragment);
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        switch (v.getId()){
+            case R.id.search_button:
+                if (event.getAction() == MotionEvent.ACTION_DOWN){
+                    searchImg.setImageResource(R.drawable.user_search_light);
+                }else if (event.getAction() == MotionEvent.ACTION_UP){
+                    searchImg.setImageResource((R.drawable.user_search_dark));
+                }
+            case R.id.post_button:
+                if (event.getAction() == MotionEvent.ACTION_DOWN){
+                    postImg.setImageResource(R.drawable.edit_light);
+                }else if (event.getAction() == MotionEvent.ACTION_UP){
+                    postImg.setImageResource((R.drawable.edit_dark));
+                }
+        }
+            
+        return false;
     }
 }

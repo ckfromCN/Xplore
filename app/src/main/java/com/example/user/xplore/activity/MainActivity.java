@@ -19,21 +19,22 @@ import com.example.user.xplore.fragment.XploreFragment;
 
 public class MainActivity extends Activity implements View.OnClickListener {
     /*
-    Èı¸ötab²¼¾Ö
+    
+    ä¸‰ä¸ªtabå¸ƒå±€
      */
     private RelativeLayout xpLayout, cameraLayout, myLayout;
     /*
-    Èı¸öfragment
+    ä¸‰ä¸ªfragment
      */
     private Fragment xpFragment, cameraFragment, myFragment;
     /*
-    µ×²¿±êÇ©µÄÎÄ×ÖºÍÍ¼Æ¬
+    åº•éƒ¨æ ‡ç­¾çš„æ–‡å­—å’Œå›¾ç‰‡
      */
     private TextView xpTv, cameraTv, myTv;
     private ImageView xpImg, cameraImg, myImg;
 
     /*
-    ÓÃÓÚ¹ÜÀíµÄfragmentManager
+    ç”¨äºç®¡ç†çš„fragmentManager
      */
     private FragmentManager fragmentManager;
 
@@ -45,8 +46,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
         fragmentManager = getFragmentManager();
         setTabSelection(1);
     }
+      
     /*
-       ÕÒÈı¸ötab²¼¾Ö,²¢×¢²áµã»÷ÊÂ¼ş
+       æ‰¾ä¸‰ä¸ªtabå¸ƒå±€,å¹¶æ³¨å†Œç‚¹å‡»äº‹ä»¶
         */
     private void initUI() {
 
@@ -65,7 +67,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         cameraImg = (ImageView) findViewById(R.id.camera_image);
         myImg = (ImageView) findViewById(R.id.my_image);
     }
-    
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -81,18 +83,18 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
 
     /*
-    ¸ù¾İÑ¡ÔñµÄtabÏÂ±êÀ´ÉèÖÃÑ¡ÖĞµÄ±êÇ©
+    æ ¹æ®é€‰æ‹©çš„tabä¸‹æ ‡æ¥è®¾ç½®é€‰ä¸­çš„æ ‡ç­¾
      */
     private void setTabSelection(int i) {
-        //Çå³ıÉÏÒ»´ÎµÄÑ¡ÖĞ×´Ì¬
+        //æ¸…é™¤ä¸Šä¸€æ¬¡çš„é€‰ä¸­çŠ¶æ€
         clearSelection();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        //Òş²ØËùÓĞfragment,ÒÔ·ÀÏÔÊ¾¶à¸öfragmentÔÚ½çÃæÉÏ
+        //éšè—æ‰€æœ‰fragment,ä»¥é˜²æ˜¾ç¤ºå¤šä¸ªfragmentåœ¨ç•Œé¢ä¸Š
         hiddenFragments(transaction);
         switch (i) {
             case 0:
-                xpImg.setImageResource(R.drawable.diamond_1);
-                xpTv.setTextColor(Color.parseColor("#ff7f27"));
+                xpImg.setImageResource(R.drawable.xplore_selected);
+                xpTv.setTextColor(Color.parseColor("#f18d02"));
                 if (xpFragment == null) {
                     xpFragment = new XploreFragment();
                     transaction.add(R.id.content, xpFragment);
@@ -102,8 +104,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 }
                 break;
             case 1:
-                cameraImg.setImageResource(R.drawable.camera_1);
-                cameraTv.setTextColor(Color.parseColor("#ff7f27"));
+                cameraImg.setImageResource(R.drawable.camera_selected);
+                cameraTv.setTextColor(Color.parseColor("#f18d02"));
                 if (cameraFragment == null) {
                     cameraFragment = new CameraFragment();
                     transaction.add(R.id.content, cameraFragment);
@@ -112,8 +114,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 }
                 break;
             case 2:
-                myImg.setImageResource(R.drawable.person_1);
-                myTv.setTextColor(Color.parseColor("#ff7f27"));
+                myImg.setImageResource(R.drawable.my_selected);
+                myTv.setTextColor(Color.parseColor("#f18d02"));
                 if (myFragment == null) {
                     myFragment = new MyFragment();
                     transaction.add(R.id.content, myFragment);
@@ -128,13 +130,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
 
     private void clearSelection() {
-        xpImg.setImageResource(R.drawable.diamond);
+        xpImg.setImageResource(R.drawable.xplore);
         cameraImg.setImageResource(R.drawable.camera);
-        myImg.setImageResource(R.drawable.person);
+        myImg.setImageResource(R.drawable.my);
 
-        xpTv.setTextColor(Color.BLACK);
-        cameraTv.setTextColor(Color.BLACK);
-        myTv.setTextColor(Color.BLACK);
+        xpTv.setTextColor(Color.parseColor("#FF838281"));
+        cameraTv.setTextColor(Color.parseColor("#FF838281"));
+        myTv.setTextColor(Color.parseColor("#FF838281"));
     }
 
     private void hiddenFragments(FragmentTransaction transaction) {
