@@ -89,23 +89,23 @@ public class PostsAdapter extends ArrayAdapter<Posts> {
         public BitmapCache() {
             // 获取应用程序最大可用内存  
             int maxMemory = (int) Runtime.getRuntime().maxMemory();
-            int cacheSize = maxMemory / 5;
+            int cacheSize = maxMemory / 8;
             mCache = new LruCache<String, Bitmap>(cacheSize) {
                 @Override
                 protected int sizeOf(String key, Bitmap bitmap) {
-                    return bitmap.getRowBytes() * bitmap.getHeight();
+                    return bitmap.getRowBytes() * bitmap.getHeight()/1024;
                 }
             };
         }
 
         @Override
         public Bitmap getBitmap(String s) {
-            return null;
+            return mCache.get(s);
         }
 
         @Override
         public void putBitmap(String s, Bitmap bitmap) {
-
+            mCache.put(s, bitmap);
         }
     }
 

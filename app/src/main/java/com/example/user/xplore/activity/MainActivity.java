@@ -45,6 +45,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
         initUI();
         fragmentManager = getFragmentManager();
         setTabSelection(1);
+        
+        
     }
       
     /*

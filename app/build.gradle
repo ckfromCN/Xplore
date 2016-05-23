@@ -1,9 +1,10 @@
+//声明一个app module,应用了com.android.application插件
 apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 22
     buildToolsVersion "22.0.1"
-
+    //默认配置，如果没有其他的配置覆盖，就会使用这里的
     defaultConfig {
         applicationId "com.example.user.xplore"
         minSdkVersion 18
@@ -11,6 +12,7 @@ android {
         versionCode 1
         versionName "1.0"
     }
+   //构建类型，常用的有release和debug两种，可以在这里面启用混淆，启用zipAlign以及配置签名信息等。
     buildTypes {
         release {
             minifyEnabled false
@@ -24,4 +26,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:22.1.1'
     compile files('libs/volley.jar')
     compile files('libs/jackson-core-2.7.4.jar')
+    compile project(':pulltorefresh')
 }

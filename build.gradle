@@ -2,18 +2,20 @@
 
 buildscript {
     repositories {
-        jcenter()
+        jcenter()//使用jcenter库
     }
     dependencies {
+        // 依赖android提供的1.2.3的gradle build
         classpath 'com.android.tools.build:gradle:1.2.3'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
 }
-
+//为所有的工程的repositories配置为jcenters
 allprojects {
     repositories {
         jcenter()
     }
 }
+

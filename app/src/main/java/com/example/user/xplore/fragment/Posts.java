@@ -4,10 +4,8 @@ package com.example.user.xplore.fragment;
 import android.content.res.XmlResourceParser;
 
 import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 
-import java.io.IOException;
 import java.io.StringReader;
 
 public class Posts {
@@ -134,6 +132,7 @@ public class Posts {
 //        }
         try {
             XmlPullParser xpp= xppf.newInstance().newPullParser();
+            
             xpp.setInput(new StringReader(content));
             // 直到文档的结尾处
             while (xpp.getEventType() != XmlResourceParser.END_DOCUMENT) {
@@ -146,9 +145,7 @@ public class Posts {
                 }
                 xpp.next();// 获取解析下一个事件
             }
-        } catch (XmlPullParserException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
